@@ -1,0 +1,33 @@
+# Student form
+
+## Original task suggestions
+
+A little React app to practice the State Hook mainly. The idea is prompted in the Learn React course of Codecademy. There is no code given and it's no "official" project, so all ist built from scratch.
+
+The task is to build a form in which a student's data are entered, with text fields for, First name, Last name, Age, Address, Homeroom class number, Student ID.
+
+While the data is entdered, the input should be updated on change, and displayed to the screen.
+
+An additional task is to add radio-type input to track the preferred lunch option.
+
+So, maybe I get some more ideas for this ...
+
+## Install React + Vite
+First I set up React + Vite using
+
+```
+npm create vite@latest
+```
+(I have Node.js installed, so I can work directly with this command.)
+
+Then I entered Project name, Framework(React) and variant (JavaScript) as asked in the terminal.
+
+Then I ran:
+
+```
+cd student_form
+npm install
+npm run dev
+```
+
+
