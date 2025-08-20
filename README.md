@@ -34,3 +34,4 @@ npm run dev
 I set up the State Hook and the fuction for handling user input.
 As we have several fields, setting up one State for all the User Input and one function won't work. But it's lot of code to set the same thing up for each field separately. Another solution must be found ...
 
+... but not now. I first set up the long version and get it running because I have to reasearch and leanr new stuff to make shortcuts.
