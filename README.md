@@ -29,5 +29,8 @@ cd student_form
 npm install
 npm run dev
 ```
+## Setting up the student form 
 
+I set up the State Hook and the fuction for handling user input.
+As we have several fields, setting up one State for all the User Input and one function won't work. But it's lot of code to set the same thing up for each field separately. Another solution must be found ...
 
