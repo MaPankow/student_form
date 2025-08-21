@@ -4,7 +4,7 @@
 
 A little React app to practice the State Hook mainly. The idea is prompted in the Learn React course of Codecademy. There is no code given and it's no "official" project, so all ist built from scratch.
 
-The task is to build a form in which a student's data are entered, with text fields for, First name, Last name, Age, Address, Homeroom class number, Student ID.
+The task is to build a form in which a student's data are entered, with text fields for First name, Last name, Age, Address, Homeroom class number, Student ID.
 
 While the data is entdered, the input should be updated on change, and displayed to the screen.
 
