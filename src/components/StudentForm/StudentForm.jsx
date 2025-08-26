@@ -9,6 +9,7 @@ function StudentForm() {
     const[homeroom, setHomeroom] = useState('');
     const[studentId, setStudentId] = useState('');
     const [lunchOptions, setLunchOptions] = useState([]);
+    const [otherLunchOption, setOtherLunchOption] = useState();
 
 
     
@@ -46,6 +47,12 @@ function StudentForm() {
             setLunchOptions((prev) => prev.filter((option) => option !== value));
         }
     }
+
+    function handleOtherLunchOptionInput(e) {
+        setOtherLunchOption(e.target.value);
+    }
+
+
 
     return (
         <div>
@@ -170,6 +177,24 @@ function StudentForm() {
                                     value="kosher"
                                 />
                             </div>
+                            <div>
+                                <label htmlFor="other">Other</label>
+                                <input 
+                                    name="lunch"
+                                    id="other"
+                                    type="checkbox"
+                                    checked={lunchOptions.includes("other")}
+                                    onChange={handleLunchOptionsInput}
+                                    value="other"
+                                />
+                                <input 
+                                    name="lunch"
+                                    id="other_lunch_option"
+                                    type="text"
+                                    onChange={handleOtherLunchOptionInput}
+                                    value={otherLunchOption}
+                                />
+                            </div>
                     </div>
                     
                 </form>
@@ -186,6 +211,7 @@ function StudentForm() {
                     {homeroom && <li>{`Homeroom class number: ${homeroom}`}</li>}
                     {studentId && <li>{`Student ID: ${studentId}`}</li>}
                     {lunchOptions && <li>{`Lunch Options: ${lunchOptions}`}</li>}
+                    {otherLunchOption && <li>{`Other: ${otherLunchOption}`}</li>}
                 </ul>
             </div>
         </div>
