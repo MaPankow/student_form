@@ -8,6 +8,9 @@ function StudentForm() {
     const[address, setAddress] = useState('');
     const[homeroom, setHomeroom] = useState('');
     const[studentId, setStudentId] = useState('');
+    const [lunchOptions, setLunchOptions] = useState([]);
+
+
     
     // handleInput functions
     function handleFirstNameInput(e) {
@@ -34,13 +37,21 @@ function StudentForm() {
         setStudentId(e.target.value);
     }
 
+    function handleLunchOptionsInput(e) {
+        const {value, checked} = e.target;
+
+        if(checked) {
+            setLunchOptions((prev) => [...prev, value]);
+        } else {
+            setLunchOptions((prev) => prev.filter((option) => option !== value));
+        }
+    }
 
     return (
         <div>
             <div id="form">
                 <h2>Enter student info here:</h2>
                 <form>
-                    {/* Birthdate, Address, Homeroom class number, Student ID */}
                     <div className="input_field">
                         <label htmlFor="first_name">First Name: </label>
                         {/* in JSX wird das for-Attribut zu htmlFor, da in JavaScript das Wort "for" schon für Schleifen reserviert ist */}
@@ -102,6 +113,65 @@ function StudentForm() {
                             value={studentId}
                         />
                     </div>
+                    <div className="checkboxes">
+                        <h3>Preferred lunch options:</h3>
+                            <div>
+                                <label htmlFor="standard">Standard/No preference</label>
+                                <input 
+                                    name="lunch"
+                                    id="standard"
+                                    type="checkbox"
+                                    checked={lunchOptions.includes("standard")}
+                                    onChange={handleLunchOptionsInput}
+                                    value="standard"
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="vegetarian">Vegetarian</label>
+                                <input 
+                                    name="lunch"
+                                    id="vegetarian"
+                                    type="checkbox"
+                                    checked={lunchOptions.includes("vegetarian")}
+                                    onChange={handleLunchOptionsInput}
+                                    value="vegetarian"
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="vegan">Vegan</label>
+                                <input 
+                                    name="lunch"
+                                    id="vegan"
+                                    type="checkbox"
+                                    checked={lunchOptions.includes("vegan")}
+                                    onChange={handleLunchOptionsInput}
+                                    value="vegan"
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="halal">Halal</label>
+                                <input 
+                                    name="lunch"
+                                    id="halal"
+                                    type="checkbox"
+                                    checked={lunchOptions.includes("halal")}
+                                    onChange={handleLunchOptionsInput}
+                                    value="halal"
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="kosher">Kosher</label>
+                                <input 
+                                    name="lunch"
+                                    id="kosher"
+                                    type="checkbox"
+                                    checked={lunchOptions.includes("kosher")}
+                                    onChange={handleLunchOptionsInput}
+                                    value="kosher"
+                                />
+                            </div>
+                    </div>
+                    
                 </form>
             </div>
             
@@ -115,6 +185,7 @@ function StudentForm() {
                     {address && <li>{`Address: ${address}`}</li>}
                     {homeroom && <li>{`Homeroom class number: ${homeroom}`}</li>}
                     {studentId && <li>{`Student ID: ${studentId}`}</li>}
+                    {lunchOptions && <li>{`Lunch Options: ${lunchOptions}`}</li>}
                 </ul>
             </div>
         </div>
