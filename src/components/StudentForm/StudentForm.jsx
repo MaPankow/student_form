@@ -45,6 +45,11 @@ function StudentForm() {
             setLunchOptions((prev) => [...prev, value]);
         } else {
             setLunchOptions((prev) => prev.filter((option) => option !== value));
+
+            if (value === "other") {
+                setOtherLunchOption(""); 
+                // empty input field
+            }
         }
     }
 
@@ -185,7 +190,7 @@ function StudentForm() {
                                     type="checkbox"
                                     checked={lunchOptions.includes("other")}
                                     onChange={handleLunchOptionsInput}
-                                    value="other"
+                                    value={"other"}
                                 />
                                 <input 
                                     name="lunch"
@@ -193,6 +198,9 @@ function StudentForm() {
                                     type="text"
                                     onChange={handleOtherLunchOptionInput}
                                     value={otherLunchOption}
+                                    disabled={!lunchOptions.includes("other")}
+                                    // Input field only active when box is checked
+                                    required={lunchOptions.includes("other")}
                                 />
                             </div>
                     </div>
@@ -210,7 +218,7 @@ function StudentForm() {
                     {address && <li>{`Address: ${address}`}</li>}
                     {homeroom && <li>{`Homeroom class number: ${homeroom}`}</li>}
                     {studentId && <li>{`Student ID: ${studentId}`}</li>}
-                    {lunchOptions && <li>{`Lunch Options: ${lunchOptions}`}</li>}
+                    {lunchOptions.length > 0 && <li>{`Lunch Options: ${lunchOptions.join(", ")}`}</li>}
                     {otherLunchOption && <li>{`Other: ${otherLunchOption}`}</li>}
                 </ul>
             </div>
