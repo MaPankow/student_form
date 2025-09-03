@@ -16,28 +16,32 @@ function StudentForm() {
 
     
     // handleInput functions
-    function handleFirstNameInput(e) {
-        setFirstName(e.target.value);
-    };
+    // function handleFirstNameInput(e) {
+    //     setFirstName(e.target.value);
+    // };
 
-    function handleLastNameInput(e) {
-        setLastName(e.target.value);
-    };
+    // function handleLastNameInput(e) {
+    //     setLastName(e.target.value);
+    // };
 
-    function handleBirthdateInput(e) {
-        setBirthdate(e.target.value);
-    };
+    // function handleBirthdateInput(e) {
+    //     setBirthdate(e.target.value);
+    // };
 
-    function handleAddressInput(e) {
-        setAddress(e.target.value);
-    }
+    // function handleAddressInput(e) {
+    //     setAddress(e.target.value);
+    // }
 
-    function handleHomeroomInput(e) {
-        setHomeroom(e.target.value);
-    }
+    // function handleHomeroomInput(e) {
+    //     setHomeroom(e.target.value);
+    // }
 
-    function handleStudentIdInput(e) {
-        setStudentId(e.target.value);
+    // function handleStudentIdInput(e) {
+    //     setStudentId(e.target.value);
+    // }
+
+    function handleTextInput(setter) {
+        return (e) => setter(e.target.value);
     }
 
     function handleLunchOptionsInput(e) {
@@ -90,7 +94,7 @@ function StudentForm() {
                             name="first_name"
                             id="first_name" 
                             type="text" 
-                            onChange={handleFirstNameInput} 
+                            onChange={handleTextInput(setFirstName)} 
                             value={firstName} 
                         />
                     </div>
@@ -100,7 +104,7 @@ function StudentForm() {
                             name="last_name"
                             id="last_name" 
                             type="text" 
-                            onChange={handleLastNameInput} 
+                            onChange={handleTextInput(setLastName)} 
                             value={lastName} 
                         />
                     </div>
@@ -110,7 +114,7 @@ function StudentForm() {
                             name="birthdate" 
                             id="birthdate" 
                             type="date"
-                            onChange={handleBirthdateInput}
+                            onChange={handleTextInput(setBirthdate)}
                             value={birthdate}
                         />
                     </div>
@@ -120,7 +124,7 @@ function StudentForm() {
                             name="address"
                             id="address"
                             type="text"
-                            onChange={handleAddressInput}
+                            onChange={handleTextInput(setAddress)}
                             value={address}
                         />
                     </div>
@@ -130,7 +134,7 @@ function StudentForm() {
                             name="homeroom"
                             id="homeroom"
                             type="text"
-                            onChange={handleHomeroomInput}
+                            onChange={handleTextInput(setHomeroom)}
                             value={homeroom}
                         />                    
                     </div>
@@ -140,7 +144,7 @@ function StudentForm() {
                             name="student_id"
                             id="student_id"
                             type="text"
-                            onChange={handleStudentIdInput}
+                            onChange={handleTextInput(setStudentId)}
                             value={studentId}
                         />
                     </div>

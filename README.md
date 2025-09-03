@@ -35,3 +35,10 @@ I set up the State Hook and the fuction for handling user input.
 As we have several fields, setting up one State for all the User Input and one function won't work. But it's lot of code to set the same thing up for each field separately. Another solution must be found ...
 
 ... but not now. I first set up the long version and get it running because I have to reasearch and leanr new stuff to make shortcuts.
+
+The lunch options a a bit of a special task. As said in the descriptions, it should be a radio-type selection. But as I wanted the possibility to enter more than one option, I used checkboxes. I then decided for a field that gives the user additional options by first checking the field, and second, entering the option. 
+The options are displayed in a list, and the 'other' option shows the user input.
+
+## Cutting things short
+
+As said, I have written code for each button seprately, which works now, but is a lot of code. A first step to do this is to use one central handleTextInput for the many simple text input functions.
