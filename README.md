@@ -41,4 +41,12 @@ The options are displayed in a list, and the 'other' option shows the user input
 
 ## Cutting things short
 
-As said, I have written code for each button seprately, which works now, but is a lot of code. A first step to do this is to use one central handleTextInput for the many simple text input functions.
+As said, I have written code for each field seprately. It was set up and worked. Now, I want to shorten it step by step.
+
+### 1. One central function for the text input field functions
+The input field functions for First Name, Last Name, Birthdate (replaced Age), Address, Homeroom nmber and Student-Id had all the same function, which was to handle the input by a user in the input field. The was no other special function, only that the birthdate field had a date type. Even this can be handled the same way as a text type. So, I summarized these functions tu one Text input function and adjusted the onChange attribute in the JSX code.
+
+### 2. Unified state object for text fields
+Previously, each text input field had its own useState hook.  
+I refactored the code to use a single state object (`textInput`) that holds all text field values.  
+The JSX and the output rendering were updated accordingly to work with this unified structure.

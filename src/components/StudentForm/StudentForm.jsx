@@ -2,46 +2,23 @@ import { useState } from "react";
 
 function StudentForm() {
     // variables for the State of the input fields
-    const[firstName, setFirstName] = useState('');
-    const[lastName, setLastName] = useState('');
-    const[birthdate, setBirthdate] = useState('');
-    const[address, setAddress] = useState('');
-    const[homeroom, setHomeroom] = useState('');
-    const[studentId, setStudentId] = useState('');
+
+    const [textInput, setTextInput] = useState({
+        firstName: '',
+        lastName: '',
+        birthdate: '',
+        address: '',
+        homeroom: '',
+        studentId: ''
+    });
     const [lunchOptions, setLunchOptions] = useState([]);
     const [otherLunchOptionChecked, setOtherLunchOptionChecked] = useState(false);
-    const [otherLunchOption, setOtherLunchOption] = useState();
+    const [otherLunchOption, setOtherLunchOption] = useState('');
 
 
-
-    
-    // handleInput functions
-    // function handleFirstNameInput(e) {
-    //     setFirstName(e.target.value);
-    // };
-
-    // function handleLastNameInput(e) {
-    //     setLastName(e.target.value);
-    // };
-
-    // function handleBirthdateInput(e) {
-    //     setBirthdate(e.target.value);
-    // };
-
-    // function handleAddressInput(e) {
-    //     setAddress(e.target.value);
-    // }
-
-    // function handleHomeroomInput(e) {
-    //     setHomeroom(e.target.value);
-    // }
-
-    // function handleStudentIdInput(e) {
-    //     setStudentId(e.target.value);
-    // }
-
-    function handleTextInput(setter) {
-        return (e) => setter(e.target.value);
+    function handleTextInput(e) {
+        const { name, value} = e.target;
+        setTextInput(prev => ({...prev, [name]: value}));
     }
 
     function handleLunchOptionsInput(e) {
@@ -91,21 +68,21 @@ function StudentForm() {
                         <label htmlFor="first_name">First Name: </label>
                         {/* in JSX wird das for-Attribut zu htmlFor, da in JavaScript das Wort "for" schon für Schleifen reserviert ist */}
                         <input 
-                            name="first_name"
+                            name="firstName"
                             id="first_name" 
                             type="text" 
-                            onChange={handleTextInput(setFirstName)} 
-                            value={firstName} 
+                            onChange={handleTextInput} 
+                            value={textInput.firstName} 
                         />
                     </div>
                     <div className="input_field">
                         <label htmlFor="last_name">Last Name: </label>
                         <input 
-                            name="last_name"
+                            name="lastName"
                             id="last_name" 
                             type="text" 
-                            onChange={handleTextInput(setLastName)} 
-                            value={lastName} 
+                            onChange={handleTextInput} 
+                            value={textInput.lastName} 
                         />
                     </div>
                     <div className="input_field">
@@ -114,8 +91,8 @@ function StudentForm() {
                             name="birthdate" 
                             id="birthdate" 
                             type="date"
-                            onChange={handleTextInput(setBirthdate)}
-                            value={birthdate}
+                            onChange={handleTextInput}
+                            value={textInput.birthdate}
                         />
                     </div>
                     <div className="input_field">
@@ -124,8 +101,8 @@ function StudentForm() {
                             name="address"
                             id="address"
                             type="text"
-                            onChange={handleTextInput(setAddress)}
-                            value={address}
+                            onChange={handleTextInput}
+                            value={textInput.address}
                         />
                     </div>
                     <div className="input_field">
@@ -134,18 +111,18 @@ function StudentForm() {
                             name="homeroom"
                             id="homeroom"
                             type="text"
-                            onChange={handleTextInput(setHomeroom)}
-                            value={homeroom}
+                            onChange={handleTextInput}
+                            value={textInput.homeroom}
                         />                    
                     </div>
                     <div className="input_field">
                         <label htmlFor="student_id">Student ID: </label>
                         <input 
-                            name="student_id"
+                            name="studentId"
                             id="student_id"
                             type="text"
-                            onChange={handleTextInput(setStudentId)}
-                            value={studentId}
+                            onChange={handleTextInput}
+                            value={textInput.studentId}
                         />
                     </div>
                     <div className="checkboxes">
@@ -234,13 +211,13 @@ function StudentForm() {
             <div id="input_output">
                 <h2>Current input:</h2>
                 <ul >
-                    {firstName && <li>{`First name: ${firstName}`}</li>} 
+                    {textInput.firstName && <li>{`First name: ${textInput.firstName}`}</li>} 
                     {/* rendert den Listeneintrag nur, sobald es kein leerer String ist */}
-                    {lastName && <li>{`Last name: ${lastName}`}</li>}
-                    {birthdate && <li>{`Birthdate: ${birthdate}`}</li>}
-                    {address && <li>{`Address: ${address}`}</li>}
-                    {homeroom && <li>{`Homeroom class number: ${homeroom}`}</li>}
-                    {studentId && <li>{`Student ID: ${studentId}`}</li>}
+                    {textInput.lastName && <li>{`Last name: ${textInput.lastName}`}</li>}
+                    {textInput.birthdate && <li>{`Birthdate: ${textInput.birthdate}`}</li>}
+                    {textInput.address && <li>{`Address: ${textInput.address}`}</li>}
+                    {textInput.homeroom && <li>{`Homeroom class number: ${textInput.homeroom}`}</li>}
+                    {textInput.studentId && <li>{`Student ID: ${textInput.studentId}`}</li>}
                     {lunchOptions.length > 0 && <li>{`Lunch Options: ${lunchOptions.join(", ")}`}</li>}
                 </ul>
             </div>
