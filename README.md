@@ -50,3 +50,6 @@ The input field functions for First Name, Last Name, Birthdate (replaced Age), A
 Previously, each text input field had its own useState hook.  
 I refactored the code to use a single state object (`textInput`) that holds all text field values.  
 The JSX and the output rendering were updated accordingly to work with this unified structure.
+
+### 3. Shortening the input fields
+The input fields have a lot of repeated content, too. So, I shorten to an array of objects which I can map over within the JSX.

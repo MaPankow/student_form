@@ -57,6 +57,14 @@ function StudentForm() {
         })
     }
 
+    const inputs = [
+        { name: "firstName", label: "First name", id: "first_name", type: "text", },
+        { name: "lastName", label: "Last name", id: "last_name", type: "text"},
+        { name: "birthdate", label: "Birthdate", id: "birthdate", type: "date"},
+        { name: "address", label: "Address", id: "address", type: "text" },
+        { name: "homeroom", label: "Homeroom class number", id: "homeroom", type: "text"},
+        { name: "studentId", label: "Student ID", id: "student_id", type: "text"}
+    ];
 
 
     return (
@@ -64,67 +72,18 @@ function StudentForm() {
             <div id="form">
                 <h2>Enter student info here:</h2>
                 <form>
-                    <div className="input_field">
-                        <label htmlFor="first_name">First Name: </label>
-                        {/* in JSX wird das for-Attribut zu htmlFor, da in JavaScript das Wort "for" schon für Schleifen reserviert ist */}
-                        <input 
-                            name="firstName"
-                            id="first_name" 
-                            type="text" 
-                            onChange={handleTextInput} 
-                            value={textInput.firstName} 
-                        />
-                    </div>
-                    <div className="input_field">
-                        <label htmlFor="last_name">Last Name: </label>
-                        <input 
-                            name="lastName"
-                            id="last_name" 
-                            type="text" 
-                            onChange={handleTextInput} 
-                            value={textInput.lastName} 
-                        />
-                    </div>
-                    <div className="input_field">
-                        <label htmlFor="birthdate">Birthdate: </label>
-                        <input 
-                            name="birthdate" 
-                            id="birthdate" 
-                            type="date"
-                            onChange={handleTextInput}
-                            value={textInput.birthdate}
-                        />
-                    </div>
-                    <div className="input_field">
-                        <label htmlFor="address">Address: </label>
-                        <input 
-                            name="address"
-                            id="address"
-                            type="text"
-                            onChange={handleTextInput}
-                            value={textInput.address}
-                        />
-                    </div>
-                    <div className="input_field">
-                        <label htmlFor="homeroom">Homeroom class number: </label>
-                        <input 
-                            name="homeroom"
-                            id="homeroom"
-                            type="text"
-                            onChange={handleTextInput}
-                            value={textInput.homeroom}
-                        />                    
-                    </div>
-                    <div className="input_field">
-                        <label htmlFor="student_id">Student ID: </label>
-                        <input 
-                            name="studentId"
-                            id="student_id"
-                            type="text"
-                            onChange={handleTextInput}
-                            value={textInput.studentId}
-                        />
-                    </div>
+                    {inputs.map(({name, label, id, type }) => (
+                        <div className="input_field" key={name}>
+                            <label htmlFor={id}>{label}: </label>
+                            <input 
+                                name={name}
+                                type={type}
+                                id={id}
+                                onChange={handleTextInput}
+                                value={textInput[name]}
+                            />
+                        </div>
+                    ))}
                     <div className="checkboxes">
                         <h3>Preferred lunch options:</h3>
                             <div>
