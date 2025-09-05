@@ -1,4 +1,5 @@
 import { useState } from "react";
+import StudentNotes from "../StudentNotes/StudentNotes";
 
 function StudentForm() {
     // variables for the State of the input fields
@@ -125,7 +126,11 @@ function StudentForm() {
                                 />
                             </div>
                     </div>
-                    
+                    <div className="notes">
+                        <h3>Notes: </h3>
+                        <StudentNotes />
+
+                    </div>
                 </form>
             </div>
             

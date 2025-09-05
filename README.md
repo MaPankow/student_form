@@ -54,3 +54,12 @@ The JSX and the output rendering were updated accordingly to work with this unif
 ### 3. Shortening the input fields
 The input fields had a lot of repeated content, too. So, I shortened them to an array of objects which I can map over within the JSX.
 Finally, I used the same method on the checkboxes, except the "other" checkbox.
+
+
+## Add an uncontrolled component for student notes
+
+I added a new component called StudentNotes.jsx to practice working with uncontrolled components in React.  
+It contains a textarea input field that does not use React state to track every keystroke.  
+Instead, the input value is accessed only when the user submits it — using a `ref` to read the current value from the DOM.
+
+This avoids unnecessary re-renders with longer text inputs.
