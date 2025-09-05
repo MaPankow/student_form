@@ -66,6 +66,9 @@ function StudentForm() {
         { name: "studentId", label: "Student ID", id: "student_id", type: "text"}
     ];
 
+    const lunchOptionsList = [ "standard", "vegetarian", "vegan", "halal", "kosher" ];
+    // can be shortened to a string array as name and type are the same for each checkbox
+
 
     return (
         <div>
@@ -86,61 +89,20 @@ function StudentForm() {
                     ))}
                     <div className="checkboxes">
                         <h3>Preferred lunch options:</h3>
-                            <div>
-                                <label htmlFor="standard">Standard/No preference</label>
-                                <input 
-                                    name="lunch"
-                                    id="standard"
-                                    type="checkbox"
-                                    checked={lunchOptions.includes("standard")}
-                                    onChange={handleLunchOptionsInput}
-                                    value="standard"
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="vegetarian">Vegetarian</label>
-                                <input 
-                                    name="lunch"
-                                    id="vegetarian"
-                                    type="checkbox"
-                                    checked={lunchOptions.includes("vegetarian")}
-                                    onChange={handleLunchOptionsInput}
-                                    value="vegetarian"
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="vegan">Vegan</label>
-                                <input 
-                                    name="lunch"
-                                    id="vegan"
-                                    type="checkbox"
-                                    checked={lunchOptions.includes("vegan")}
-                                    onChange={handleLunchOptionsInput}
-                                    value="vegan"
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="halal">Halal</label>
-                                <input 
-                                    name="lunch"
-                                    id="halal"
-                                    type="checkbox"
-                                    checked={lunchOptions.includes("halal")}
-                                    onChange={handleLunchOptionsInput}
-                                    value="halal"
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="kosher">Kosher</label>
-                                <input 
-                                    name="lunch"
-                                    id="kosher"
-                                    type="checkbox"
-                                    checked={lunchOptions.includes("kosher")}
-                                    onChange={handleLunchOptionsInput}
-                                    value="kosher"
-                                />
-                            </div>
+                            {lunchOptionsList.map(option => 
+                                <div>
+                                    <label htmlFor={option}>{option.charAt(0).toUpperCase() + option.slice(1)}</label>
+                                    {/* Draw label from option variable: make first letter upper case and add string minus first letter */}
+                                    <input 
+                                        name="lunch"
+                                        id={option}
+                                        type="checkbox"
+                                        checked={lunchOptions.includes(option)}
+                                        onChange={handleLunchOptionsInput}
+                                        value={option}
+                                    />
+                                </div>
+                            )}
                             <div>
                                 <label htmlFor="other">Other</label>
                                 <input 

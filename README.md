@@ -52,4 +52,5 @@ I refactored the code to use a single state object (`textInput`) that holds all 
 The JSX and the output rendering were updated accordingly to work with this unified structure.
 
 ### 3. Shortening the input fields
-The input fields have a lot of repeated content, too. So, I shorten to an array of objects which I can map over within the JSX.
+The input fields had a lot of repeated content, too. So, I shortened them to an array of objects which I can map over within the JSX.
+Finally, I used the same method on the checkboxes, except the "other" checkbox.
