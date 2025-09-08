@@ -1,19 +1,6 @@
-import { useRef } from 'react';
+import { useRef, forwardRef } from 'react';
 
-export default function StudentNotes() {
-
-    const notesRef = useRef('');
-
-    const handleSubmit = (e) => {
-
-        e.preventDefault();
-
-        const notes = notesRef.current.value;
-        alert (
-            `Notes: ${notes}`
-        );
-        
-    };
+function StudentNotes(props, ref) {
 
     return (
         <div className="input_field">
@@ -21,9 +8,12 @@ export default function StudentNotes() {
             <textarea
                 name="notes"
                 id="notes"
-                ref={notesRef}
+                ref={ref}
+                maxLength="200"
+                placeholder="Enter text here (max. 200 characters)"
             ></textarea>
-            <button onSubmit={handleSubmit} value="Submit">Submit</button>
         </div> 
     )
 }
+
+export default forwardRef(StudentNotes);

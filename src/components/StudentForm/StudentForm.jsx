@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import StudentNotes from "../StudentNotes/StudentNotes";
 
 function StudentForm() {
+
+    const notesRef = useRef(null);
     // variables for the State of the input fields
 
     const [textInput, setTextInput] = useState({
@@ -70,12 +72,18 @@ function StudentForm() {
     const lunchOptionsList = [ "standard", "vegetarian", "vegan", "halal", "kosher" ];
     // can be shortened to a string array as name and type are the same for each checkbox
 
+    function handleSubmit(e) {
+        e.preventDefault();
+        alert(`Notes: ${notesRef.current.value}`);
+        notesRef.current.value=''; // clear textarea after alerting input
+    }
+
 
     return (
         <div>
             <div id="form">
                 <h2>Enter student info here:</h2>
-                <form>
+                <form onSubmit={handleSubmit}>
                     {inputs.map(({name, label, id, type }) => (
                         <div className="input_field" key={name}>
                             <label htmlFor={id}>{label}: </label>
@@ -128,8 +136,8 @@ function StudentForm() {
                     </div>
                     <div className="notes">
                         <h3>Notes: </h3>
-                        <StudentNotes />
-
+                        <StudentNotes ref={notesRef} />
+                        <button type="submit">Submit</button>
                     </div>
                 </form>
             </div>
