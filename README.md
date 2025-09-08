@@ -58,8 +58,19 @@ Finally, I used the same method on the checkboxes, except the "other" checkbox.
 
 ## Add an uncontrolled component for student notes
 
-I added a new component called StudentNotes.jsx to practice working with uncontrolled components in React.  
-It contains a textarea input field that does not use React state to track every keystroke.  
-Instead, the input value is accessed only when the user submits it — using a `ref` to read the current value from the DOM.
+I added a new component called `StudentNotes.jsx` to practice working with uncontrolled components in React.  
+It contains a `<textarea>` input field that does not use React state to track every keystroke.  
+Instead, the input value is accessed only when the user submits the form — using a `ref` to read the current value from the DOM.
 
-This avoids unnecessary re-renders with longer text inputs.
+This avoids unnecessary re-renders when typing longer text.
+
+### Code doesn't work as intended yet
+
+`StudentNotes.jsx` is meant to be a child component of `StudentForm.jsx`.  
+I first implemented it with `useRef()` and a submit button, but the `onSubmit` attribute on the button doesn't work as expected:  
+Instead of alerting the input text, the input gets added to the URL.
+
+As I found out, this is because the button is not wrapped in a `<form>`.  
+There **is** a form – but it's defined in the parent component, and the child component doesn't "know" about it.
+
+Next step: I need to pass a `ref` from the parent component (via props) and connect the input properly to the existing form.

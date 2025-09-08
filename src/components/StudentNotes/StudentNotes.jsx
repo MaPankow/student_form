@@ -1,9 +1,29 @@
+import { useRef } from 'react';
+
 export default function StudentNotes() {
 
+    const notesRef = useRef('');
+
+    const handleSubmit = (e) => {
+
+        e.preventDefault();
+
+        const notes = notesRef.current.value;
+        alert (
+            `Notes: ${notes}`
+        );
+        
+    };
+
     return (
-        <div>
-            <p>Once upon a time there was a little text input field waiting to be created.</p> 
-            <p>The rubber duck just shrugged and said: "Well, it's weekend now."</p>
-        </div>
+        <div className="input_field">
+            <label htmlFor="notes">Enter notes: </label>
+            <textarea
+                name="notes"
+                id="notes"
+                ref={notesRef}
+            ></textarea>
+            <button onSubmit={handleSubmit} value="Submit">Submit</button>
+        </div> 
     )
 }
