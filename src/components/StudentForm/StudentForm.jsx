@@ -17,7 +17,7 @@ function StudentForm() {
     const [lunchOptions, setLunchOptions] = useState([]);
     const [otherLunchOptionChecked, setOtherLunchOptionChecked] = useState(false);
     const [otherLunchOption, setOtherLunchOption] = useState('');
-    const [notesEntry, setNotesEntry] =useState('');
+    const [notesEntries, setNotesEntries] = useState([]);
 
 
     function handleTextInput(e) {
@@ -75,8 +75,15 @@ function StudentForm() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        setNotesEntry(notesRef.current.value);
-        notesRef.current.value=''; // clear textarea after alerting input
+        const noteText = notesRef.current.value.trim();
+        if (noteText) {
+            setNotesEntries(prev => [
+                {
+                    id: Date.now() + Math.random(),
+                    text: noteText
+                }, ...prev]
+            )};
+            notesRef.current.value = '';
     }
 
 
@@ -154,8 +161,13 @@ function StudentForm() {
                     {textInput.homeroom && <li>{`Homeroom class number: ${textInput.homeroom}`}</li>}
                     {textInput.studentId && <li>{`Student ID: ${textInput.studentId}`}</li>}
                     {lunchOptions.length > 0 && <li>{`Lunch Options: ${lunchOptions.join(", ")}`}</li>}
-                    {notesEntry && <p>{`Notes: ${notesEntry}`}</p>}
                 </ul>
+                <h3>Submitted Notes</h3>
+                <ol>
+                    {notesEntries.map((note) => (
+                        <li key={note.id}>{note.text}</li>
+                    ))}
+                </ol>
             </div>
         </div>
     )

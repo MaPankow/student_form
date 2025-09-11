@@ -78,3 +78,8 @@ There **is** a form – but it's defined in the parent component, and the child 
 I needed to pass a `ref` from the parent component (via props) and properly connect the input to the existing form. To achieve this, I used `useRef` in both components and implemented the submit logic in the parent component `StudentForm.jsx`. I passed the ref as a prop to the child component.
 
 Because of this, the child component `StudentNotes.jsx` needed to forward the ref using `forwardRef`. The `forwardRef` function is a higher-order function that takes the component as an argument and returns a new component with forwarded ref support. To illustrate this, I wrapped the component in the export statement.
+
+### Displaying Notes after submit
+Once the note was successfully alerted and the uncontrolled component was confirmed to be working, I introduced state to display the submitted note entries.
+
+To allow submitting and displaying multiple notes, I stored the entries in an array and rendered them in an ordered list. The newest entries appear first because each new note is added to the beginning of the array using the array spread syntax `([newNote, ...prev])`.
