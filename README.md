@@ -73,4 +73,8 @@ Instead of alerting the input text, the input gets added to the URL.
 As I found out, this is because the button is not wrapped in a `<form>`.  
 There **is** a form – but it's defined in the parent component, and the child component doesn't "know" about it.
 
-Next step: I need to pass a `ref` from the parent component (via props) and connect the input properly to the existing form.
+### Passing `ref` from parent component to child component
+
+I needed to pass a `ref` from the parent component (via props) and properly connect the input to the existing form. To achieve this, I used `useRef` in both components and implemented the submit logic in the parent component `StudentForm.jsx`. I passed the ref as a prop to the child component.
+
+Because of this, the child component `StudentNotes.jsx` needed to forward the ref using `forwardRef`. The `forwardRef` function is a higher-order function that takes the component as an argument and returns a new component with forwarded ref support. To illustrate this, I wrapped the component in the export statement.

@@ -17,6 +17,7 @@ function StudentForm() {
     const [lunchOptions, setLunchOptions] = useState([]);
     const [otherLunchOptionChecked, setOtherLunchOptionChecked] = useState(false);
     const [otherLunchOption, setOtherLunchOption] = useState('');
+    const [notesEntry, setNotesEntry] =useState('');
 
 
     function handleTextInput(e) {
@@ -74,7 +75,7 @@ function StudentForm() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        alert(`Notes: ${notesRef.current.value}`);
+        setNotesEntry(notesRef.current.value);
         notesRef.current.value=''; // clear textarea after alerting input
     }
 
@@ -153,6 +154,7 @@ function StudentForm() {
                     {textInput.homeroom && <li>{`Homeroom class number: ${textInput.homeroom}`}</li>}
                     {textInput.studentId && <li>{`Student ID: ${textInput.studentId}`}</li>}
                     {lunchOptions.length > 0 && <li>{`Lunch Options: ${lunchOptions.join(", ")}`}</li>}
+                    {notesEntry && <p>{`Notes: ${notesEntry}`}</p>}
                 </ul>
             </div>
         </div>
