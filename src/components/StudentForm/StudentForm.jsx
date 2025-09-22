@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import StudentNotes from "../StudentNotes/StudentNotes";
+import styles from './StudentForm.module.css';
 
 function StudentForm() {
 
@@ -90,7 +91,7 @@ function StudentForm() {
     return (
         <div>
             <div id="form">
-                <h2>Enter student info here:</h2>
+                <h2 className={styles.h2}>Enter student info here:</h2>
                 <form onSubmit={handleSubmit}>
                     {inputs.map(({name, label, id, type }) => (
                         <div className="input_field" key={name}>
@@ -151,7 +152,7 @@ function StudentForm() {
             </div>
             
             <div id="input_output">
-                <h2>Current input:</h2>
+                <h2 className={styles.h2}>Current input:</h2>
                 <ul >
                     {textInput.firstName && <li>{`First name: ${textInput.firstName}`}</li>} 
                     {/* rendert den Listeneintrag nur, sobald es kein leerer String ist */}

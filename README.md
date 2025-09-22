@@ -83,3 +83,8 @@ Because of this, the child component `StudentNotes.jsx` needed to forward the re
 Once the note was successfully alerted and the uncontrolled component was confirmed to be working, I introduced state to display the submitted note entries.
 
 To allow submitting and displaying multiple notes, I stored the entries in an array and rendered them in an ordered list. The newest entries appear first because each new note is added to the beginning of the array using the array spread syntax `([newNote, ...prev])`.
+
+## Creating a custom hook
+I decided to use this project and parctice more React stuff with it. I want to create a custom hook now, which uses the state hook and the effect hook and toggles between a light and a dark theme.
+
+### But first add some CSS ...
