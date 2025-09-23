@@ -10,7 +10,12 @@ While the data is entdered, the input should be updated on change, and displayed
 
 An additional task is to add radio-type input to track the preferred lunch option.
 
-So, maybe I get some more ideas for this ...
+---
+Here's some additional tasks I've added to the project:
+- add an uncontrolled component
+- add a custom hook and styles for toggling between a light theme and a dark theme
+
+---
 
 ## Install React + Vite
 First I set up React + Vite using
@@ -20,7 +25,7 @@ npm create vite@latest
 ```
 (I have Node.js installed, so I can work directly with this command.)
 
-Then I entered Project name, Framework(React) and variant (JavaScript) as asked in the terminal.
+Then I entered project name, Framework(React) and variant (JavaScript) as asked in the terminal.
 
 Then I ran:
 
@@ -36,7 +41,8 @@ As we have several fields, setting up one State for all the User Input and one f
 
 ... but not now. I first set up the long version and get it running because I have to reasearch and leanr new stuff to make shortcuts.
 
-The lunch options a a bit of a special task. As said in the descriptions, it should be a radio-type selection. But as I wanted the possibility to enter more than one option, I used checkboxes. I then decided for a field that gives the user additional options by first checking the field, and second, entering the option. 
+
+The lunch options are a bit of a special task. As said in the descriptions, it should be a radio-type selection. But as I wanted the possibility to enter more than one option, I used checkboxes. I then decided for a field that gives the user additional options by first checking the field, and second, entering the option. 
 The options are displayed in a list, and the 'other' option shows the user input.
 
 ## Cutting things short
@@ -84,7 +90,60 @@ Once the note was successfully alerted and the uncontrolled component was confir
 
 To allow submitting and displaying multiple notes, I stored the entries in an array and rendered them in an ordered list. The newest entries appear first because each new note is added to the beginning of the array using the array spread syntax `([newNote, ...prev])`.
 
-## Creating a custom hook
-I decided to use this project and parctice more React stuff with it. I want to create a custom hook now, which uses the state hook and the effect hook and toggles between a light and a dark theme.
+## Creating a Custom Hook
 
-### But first add some CSS ...
+I want to create a custom hook that uses the `useState` and `useEffect` hooks to toggle between a light and dark theme.
+
+---
+
+### First, some CSS ...
+
+To start, I added some basic styling for the `App.jsx` and `StudentForm.jsx` components.
+
+In `App.module.css`, I added padding so that the content no longer sticks to the left edge of the screen.  
+I also set a different font for the `h1` and `h2` elements, using both `App.module.css` and `StudentForm.module.css`.
+
+For now, that’s enough on the visual side — the more exciting parts are still to come.
+
+---
+
+### Implementing Styles for Light and Dark Themes
+
+When I open the project in the browser, the page defaults to a dark background with light text.  
+That's because the default `index.css` already includes some theme-related code added during project setup.
+
+Here’s what I found:
+
+```css
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+
+  a:hover {
+    color: #747bff;
+  }
+
+  button {
+    background-color: #f9f9f9;
+  }
+}
+```
+And in the :root styling object, I found this:
+```
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+```
+
+
+So this is a pre-configured color scheme that adapts to the user's system preferences.
+Since my browser is set to dark mode, the page automatically renders using the dark theme when I open it in localhost.
+
+That’s a neat feature as it respects the user’s preferred system settings without requiring any interaction.
+
+But for my custom hook, I’m going to take control of the theme manually.
+Never mind UX, this one’s for learning.
+
+So, I took out the `@media (prefers-color-scheme: light)` to replace it with
