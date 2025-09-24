@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react';
 
 export const useTheme = () => {
     const [theme, setTheme] = useState("dark");
-// Set the initial value to "dark" because it's often the default in modern apps,
-// as it’s easier on the eyes and saves energy on darker screens.
+    // Set the initial value to "dark" for better UX and energy savings.
 
     useEffect(() => {
         document.documentElement.setAttribute("data-theme", theme);

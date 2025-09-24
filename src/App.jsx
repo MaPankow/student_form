@@ -12,7 +12,8 @@ function App() {
     <div className={styles.app}>
       <h1 className={styles.h1}>Student Form App</h1>
       <div>
-        <button onClick={onToggleTheme}>Switch to light/dark mode</button>
+        <button onClick={onToggleTheme}>{isDarkTheme ? "Switch to 🌞 mode" : "Switch to 🌚 mode"}</button>
+        {/* Emojis copied from https://emojipedia.org */}
         <StudentForm />
       </div>
 
