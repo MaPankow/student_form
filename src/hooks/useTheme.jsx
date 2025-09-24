@@ -9,7 +9,7 @@ export const useTheme = () => {
     }, [theme]);
 
     const onToggleTheme = () => {
-        setTheme(theme === "light" ? "dark" : "light");
+        setTheme(prevTheme => prevTheme === "light" ? "dark" : "light");
     }
 
     const isDarkTheme = (theme === "dark");
